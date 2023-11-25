@@ -1,1 +1,5 @@
-import csvParser from "csv-parser";
+export class ArticlePickingTime {
+  constructor({id}) {
+    this.id = id;
+  }
+}
