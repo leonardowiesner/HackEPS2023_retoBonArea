@@ -1,3 +1,1 @@
-const csv = require('csv-parser');
-
-console.log(csv);
+import "./csv/ArticlePickingTime.js";
