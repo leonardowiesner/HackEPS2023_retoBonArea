@@ -1,8 +1,7 @@
-import parseAsync from "./csv/Parse.js";
-import ParseableFile from './csv/ParseableFile.js';
+import * as parse from "./csv/Parse.js";
 
-const ARTICLE_PICKING_TIME = await parseAsync(ParseableFile.ARTICLE_PICKING_TIME);
-const CUSTOMERS_PROPERTIES = await parseAsync(ParseableFile.CUSTOMERS_PROPERTIES);
-const TICKETS = await parseAsync(ParseableFile.TICKETS);
-const TESTS = await parseAsync(ParseableFile.TEST);
-const PLANOGRAM_TABLES = await parseAsync(ParseableFile.PLANOGRAM_TABLE);
+const ARTICLE_PICKING_TIME = await parse.getArticlePickingTimeAsync();
+const CUSTOMERS_PROPERTIES = await parse.getCustomersPropertiesAsync();
+const TICKETS = await parse.getTicketsAsync();
+const TESTS = await parse.getTestsAsync();
+const PLANOGRAM_TABLES = await parse.getPlanogramTablesAsync();

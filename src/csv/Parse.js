@@ -5,10 +5,15 @@ import ParseableFile from "./ParseableFile.js";
 import ArticlePickingTime from "../models/ArticlePickingTime.js";
 import CustomerProperties from "../models/CustomerProperties.js";
 import Ticket from "../models/Ticket.js";
+import Test from "../models/Test.js";
 import PlanogramTable from "../models/PlanogramTable.js";
 
 const BASE_PATH = "./assets/csv";
 
+/**
+ * @param {string} fileName
+ * @returns {Promise<Array<any>>}
+ */
 const parseCsv = async (fileName) => {
   let csvData = [];
 
@@ -24,7 +29,11 @@ const parseCsv = async (fileName) => {
   });
 };
 
-const parseArticlePickingTimeAsync = async () => {
+/**
+ *
+ * @returns {Promise<Array<ArticlePickingTime>>}
+ */
+export const getArticlePickingTimeAsync = async () => {
   const data = await parseCsv(ParseableFile.ARTICLE_PICKING_TIME);
 
   return data.map(
@@ -41,7 +50,10 @@ const parseArticlePickingTimeAsync = async () => {
   );
 };
 
-const parseCustomersPropertiesAsync = async () => {
+/**
+ * @returns {Promise<Array<CustomerProperties>>}
+ */
+export const getCustomersPropertiesAsync = async () => {
   const data = await parseCsv(ParseableFile.CUSTOMERS_PROPERTIES);
 
   return data.map(
@@ -54,7 +66,10 @@ const parseCustomersPropertiesAsync = async () => {
   );
 };
 
-const parseTicketsAsync = async () => {
+/**
+ * @returns {Promise<Array<Ticket>>}
+ */
+export const getTicketsAsync = async () => {
   const data = await parseCsv(ParseableFile.TICKETS);
 
   return data.map(
@@ -69,14 +84,20 @@ const parseTicketsAsync = async () => {
   );
 };
 
-const parseTestAsync = async () => {
+/**
+ * @returns {Promise<Array<Test>>}
+ */
+export const getTestsAsync = async () => {
   const data = await parseCsv(ParseableFile.TEST);
   return data.map(
     (x) => new Ticket({ id: x.ticket_id, enter_date_time: x.enter })
   );
 };
 
-const parseTableAsync = async () => {
+/**
+ * @returns {Promise<Array<PlanogramTable>>}
+ */
+export const getPlanogramTablesAsync = async () => {
   const data = await parseCsv(ParseableFile.PLANOGRAM_TABLE);
 
   return data.map(
@@ -90,24 +111,3 @@ const parseTableAsync = async () => {
       })
   );
 };
-
-/**
- * Parse specified csv file asynchronously
- *
- * @param {ParseableFile} fileType
- * @returns
- */
-export default async function parseAsync(fileType) {
-  switch (fileType) {
-    case ParseableFile.PLANOGRAM_TABLE:
-      return await parseTableAsync();
-    case ParseableFile.ARTICLE_PICKING_TIME:
-      return await parseArticlePickingTimeAsync();
-    case ParseableFile.CUSTOMERS_PROPERTIES:
-      return await parseCustomersPropertiesAsync();
-    case ParseableFile.TICKETS:
-      return await parseTicketsAsync();
-    case ParseableFile.TEST:
-      return await parseTestAsync();
-  }
-}
