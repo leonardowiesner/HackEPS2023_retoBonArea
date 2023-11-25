@@ -1,0 +1,21 @@
+{
+    "name": "HackEPS2023_retoBonArea",
+    "version": "1.0.0",
+    "description": "Reto BonArea",
+    "main": "src/main.js",
+    "scripts": {
+        "start": "tsc -p . && node dist/main.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "hackeps2023"
+    ],
+    "author": "GooseTeam",
+    "license": "MIT",
+    "devDependencies": {
+        "@types/node": "^20.10.0",
+        "@typescript-eslint/eslint-plugin": "^6.12.0",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.3.2"
+    }
+}
